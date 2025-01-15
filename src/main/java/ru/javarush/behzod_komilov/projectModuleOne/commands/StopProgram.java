@@ -29,7 +29,7 @@ public class StopProgram implements AbleToDoSomething {
     }
 
     @Override
-    public void decryptFile() {
+    public void decryptFile(int key) {
 
     }
 

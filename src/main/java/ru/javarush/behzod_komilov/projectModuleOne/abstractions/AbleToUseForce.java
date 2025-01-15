@@ -5,7 +5,7 @@ public abstract class AbleToUseForce implements AbleToDoSomething {
     public abstract void bruteForceFile();
 
     @Override
-    public void decryptFile() {}
+    public void decryptFile(int key) {}
 
     @Override
     public void encryptFile(int key) {}

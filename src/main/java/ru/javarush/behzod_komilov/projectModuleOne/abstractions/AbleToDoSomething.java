@@ -4,7 +4,7 @@ public interface AbleToDoSomething {
 
     public void encryptFile(int key);
 
-    public void decryptFile();
+    public void decryptFile(int key);
 
     public void bruteForceFile();
 

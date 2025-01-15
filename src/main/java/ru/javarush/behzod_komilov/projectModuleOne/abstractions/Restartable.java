@@ -9,7 +9,7 @@ public  abstract class Restartable implements AbleToDoSomething{
     public void encryptFile(int key){}
 
     @Override
-    public void decryptFile(){}
+    public void decryptFile(int key){}
 
     @Override
     public void bruteForceFile(){}

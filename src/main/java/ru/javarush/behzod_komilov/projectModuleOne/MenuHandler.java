@@ -42,18 +42,7 @@ public class MenuHandler {
             System.out.println("Вы выбрали: " + Constants.ENCRYPT_TEXT);
             System.out.println(Constants.DIVIDING_LINE);
 
-            System.out.print("Введите ключ шифра: ");
-
-            boolean isTrueFormat = true;
-
-            while (isTrueFormat) {
-                try {
-                    setKey(Integer.parseInt(scanner.nextLine()));
-                    isTrueFormat = false;
-                } catch (NumberFormatException e) {
-                    System.out.println("Вы не ввели число, введите ключ шифра заново: ");
-                }
-            }
+            inputKey();
 
             selectedAction = ActionsName.ENCRYPT;
 
@@ -63,6 +52,8 @@ public class MenuHandler {
 
             System.out.println("Вы выбрали: " + Constants.DECRYPT_TEXT);
             System.out.println(Constants.DIVIDING_LINE);
+
+            inputKey();
 
             selectedAction = ActionsName.DECRYPT;
 
@@ -96,6 +87,21 @@ public class MenuHandler {
 
     }
 
+    private static void inputKey() {
+
+        System.out.print("Введите ключ шифра: ");
+
+        boolean isTrueFormat = true;
+
+        while (isTrueFormat) {
+            try {
+                setKey(Integer.parseInt(scanner.nextLine()));
+                isTrueFormat = false;
+            } catch (NumberFormatException e) {
+                System.out.println("Вы не ввели число, введите ключ шифра заново: ");
+            }
+        }
+    }
 
     public void executeAction(ActionsName action) {
         switch (action) {
@@ -105,7 +111,7 @@ public class MenuHandler {
                 break;
             case DECRYPT:
                 AbleToDoSomething decoder = ActionsName.findActionsName(ActionsName.DECRYPT);
-                decoder.decryptFile();
+                decoder.decryptFile(key);
                 break;
             case BRUTEFORCE:
                 AbleToDoSomething brute = ActionsName.findActionsName(ActionsName.BRUTEFORCE);

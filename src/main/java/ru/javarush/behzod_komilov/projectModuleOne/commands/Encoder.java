@@ -15,12 +15,20 @@ import java.util.List;
 public class Encoder extends Encryptable implements AbleToDoSomething {
 
     static byte[] allBytesOfSourceFileForDecryption;
+    private static Path pathOfSourceFile = Paths.get(Constants.PATH_OF_SOURCE_FILE);
+    private static Path pathOfEncryptedFile = Paths.get(Constants.PATH_OF_ENCRYPTED_FILE);
+
+    public void setPathOfEncryptedFile(Path pathOfEncryptedFile) {
+        this.pathOfEncryptedFile = pathOfEncryptedFile;
+    }
+
+    public void setPathOfSourceFile(Path pathOfSourceFile) {
+        this.pathOfSourceFile = pathOfSourceFile;
+    }
 
     @Override
     public void encryptFile(int key) {
 
-        Path pathOfSourceFile = Paths.get(Constants.PATH_OF_SOURCE_FILE);
-        Path pathOfEncryptedFile = Paths.get(Constants.PATH_OF_ENCRYPTED_FILE);
         List<Character> charListOfSourceFile = GeneralFunctions.convertFileToCharList(pathOfSourceFile);
         List<Character> charListOfEncryptedFile = new ArrayList<>();
 

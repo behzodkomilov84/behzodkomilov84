@@ -7,7 +7,7 @@ public abstract class Stoppable implements AbleToDoSomething{
     }
 
     @Override
-    public void decryptFile() {
+    public void decryptFile(int key) {
 
     }
 

@@ -4,7 +4,7 @@ public abstract class Encryptable implements AbleToDoSomething {
     public abstract void encryptFile(int key);
 
     @Override
-    public void decryptFile() {
+    public void decryptFile(int key) {
     }
 
     @Override
