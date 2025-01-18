@@ -44,12 +44,10 @@ public class GeneralFunctions {
             newIndexOfCharacterInAlphabetsAndSymbols = findNewIndex(indexOfCharacterInAlphabetsAndSymbols, realCypherKey);
 
             encryptedChar = Constants.ALPHABETS_AND_SYMBOLS.toCharArray()[newIndexOfCharacterInAlphabetsAndSymbols];
-            return encryptedChar;
         } else {
             encryptedChar = oneByteOfSourceFile;
-            return encryptedChar;
         }
-
+            return encryptedChar;
     }
 
     private static int findNewIndex(int indexOfCharacterInAlphabetsAndSymbols, int realCypherKey) {
@@ -73,16 +71,9 @@ public class GeneralFunctions {
         return newIndexOfCharacterInAlphabetsAndSymbols;
     }
 
-    public static boolean existInAlphabetsAndSymbols(char oneByteOfSourceFile) {
+    public static boolean existInAlphabetsAndSymbols(char oneCharOfSourceFile) {
 
-        boolean isExist = Constants.ALPHABETS_AND_SYMBOLS.contains(String.valueOf(oneByteOfSourceFile));
-
-        return isExist;
-    }
-
-    public static boolean existInAlphabetsAndSymbols(byte oneByteOfSourceFile) {
-
-        boolean isExist = Constants.ALPHABETS_AND_SYMBOLS.contains(String.valueOf((char) oneByteOfSourceFile));
+        boolean isExist = Constants.ALPHABETS_AND_SYMBOLS.contains(String.valueOf(oneCharOfSourceFile));
 
         return isExist;
     }
