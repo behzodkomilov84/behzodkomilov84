@@ -14,8 +14,8 @@ import java.util.List;
 
 public class Encoder extends Encryptable implements AbleToDoSomething {
 
-    private static Path pathOfSourceFile = Paths.get(Constants.PATH_OF_SOURCE_FILE);
-    private static Path pathOfEncryptedFile = Paths.get(Constants.PATH_OF_ENCRYPTED_FILE);
+    private static Path pathOfSourceFile = Paths.get(Constants.STRING_OF_PATH_OF_SOURCE_FILE);
+    private static Path pathOfEncryptedFile = Paths.get(Constants.STRING_OF_PATH_OF_ENCRYPTED_FILE);
 
     public void setPathOfEncryptedFile(Path pathOfEncryptedFile) {
         this.pathOfEncryptedFile = pathOfEncryptedFile;
@@ -36,6 +36,7 @@ public class Encoder extends Encryptable implements AbleToDoSomething {
             for (int i = 0; i < charListOfSourceFile.size(); i++) {
 
                 charListOfEncryptedFile.add(GeneralFunctions.encryptChar(charListOfSourceFile.get(i), key)); // shu yerda encrypt bo'ladi
+
                 bufferedWriter.write(charListOfEncryptedFile.get(i));
             }
 

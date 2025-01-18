@@ -9,8 +9,8 @@ import java.nio.file.Paths;
 
 public class Decoder extends Decryptable implements AbleToDoSomething {
 
-    private Path pathOfDecryptedFile = Paths.get(Constants.PATH_OF_DECRYPTED_FILE);
-    private Path pathOfEncryptedFile = Paths.get(Constants.PATH_OF_ENCRYPTED_FILE);
+    private Path pathOfDecryptedFile = Paths.get(Constants.STRING_OF_PATH_OF_DECRYPTED_FILE);
+    private Path pathOfEncryptedFile = Paths.get(Constants.STRING_OF_PATH_OF_ENCRYPTED_FILE);
     private Encoder encoder = new Encoder();
 
     @Override
