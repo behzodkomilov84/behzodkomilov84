@@ -1,6 +1,7 @@
 package ru.javarush.behzod_komilov.projectModuleOne;
 
 import ru.javarush.behzod_komilov.projectModuleOne.abstractions.AbleToDoSomething;
+import ru.javarush.behzod_komilov.projectModuleOne.commands.*;
 import ru.javarush.behzod_komilov.projectModuleOne.constants.Constants;
 
 import java.util.Scanner;
@@ -107,23 +108,28 @@ public class MenuHandler {
         switch (action) {
             case ENCRYPT:
                 AbleToDoSomething encoder = ActionsName.findActionsName(ActionsName.ENCRYPT);
-                encoder.encryptFile(key);
+                Encoder encoderObject = (Encoder) encoder;
+                encoderObject.encryptFile(key);
                 break;
             case DECRYPT:
                 AbleToDoSomething decoder = ActionsName.findActionsName(ActionsName.DECRYPT);
-                decoder.decryptFile(key);
+                Decoder decoderObject = (Decoder) decoder;
+                decoderObject.decryptFile(key);
                 break;
             case BRUTEFORCE:
                 AbleToDoSomething brute = ActionsName.findActionsName(ActionsName.BRUTEFORCE);
-                brute.bruteForceFile();
+                BruteForce bruteForce = (BruteForce) brute;
+                bruteForce.bruteForceFile();
                 break;
             case EXIT:
                 AbleToDoSomething exitThisProgram = ActionsName.findActionsName(ActionsName.EXIT);
-                exitThisProgram.stopThisProgram();
+                StopProgram stopThisProgram = (StopProgram) exitThisProgram;
+                stopThisProgram.stopThisProgram();
                 break;
             case OTHER:
                 AbleToDoSomething restartProgram = ActionsName.findActionsName(ActionsName.OTHER);
-                restartProgram.restartSelection();
+                Restarter restarter = (Restarter) restartProgram;
+                restarter.restartSelection();
                 break;
 
         }

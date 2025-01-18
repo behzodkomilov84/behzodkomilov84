@@ -23,23 +23,4 @@ public class StopProgram implements AbleToDoSomething {
         System.exit(0);
     }
 
-    @Override
-    public void encryptFile(int key) {
-
-    }
-
-    @Override
-    public void decryptFile(int key) {
-
-    }
-
-    @Override
-    public void bruteForceFile() {
-
-    }
-
-    @Override
-    public void restartSelection() {
-
-    }
 }

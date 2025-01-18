@@ -14,7 +14,6 @@ import java.util.List;
 
 public class Encoder extends Encryptable implements AbleToDoSomething {
 
-    static byte[] allBytesOfSourceFileForDecryption;
     private static Path pathOfSourceFile = Paths.get(Constants.PATH_OF_SOURCE_FILE);
     private static Path pathOfEncryptedFile = Paths.get(Constants.PATH_OF_ENCRYPTED_FILE);
 
