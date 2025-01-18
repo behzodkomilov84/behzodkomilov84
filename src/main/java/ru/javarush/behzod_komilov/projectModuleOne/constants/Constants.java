@@ -14,11 +14,11 @@ public class Constants {
     public static final String SYMBOLS = ".,-:;!";
     public static final String ALPHABETS_AND_SYMBOLS = RUSSIAN_LETTERS + ENGLISH_LETTERS + RUSSIAN_LETTERS.toUpperCase()
             + ENGLISH_LETTERS.toUpperCase() + SYMBOLS;
-    public static final String PATH_OF_SOURCE_FILE = "src/TextFiles/SourceFile.txt";
-    public static final String PATH_OF_ENCRYPTED_FILE = "src/TextFiles/EncryptedFile.txt";
-    public static final String PATH_OF_DECRYPTED_FILE = "src/TextFiles/DecryptedFile.txt";
-    public static final String PATH_OF_REFERENCE_WORDS_FILE = "src/TextFiles/ReferenceWords.txt";
-    public static final String PATH_OF_BRUTE_FORCE_FILE = "src/TextFiles/BruteForce.txt";
+    public static final String STRING_OF_PATH_OF_SOURCE_FILE = "src/TextFiles/SourceFile.txt";
+    public static final String STRING_OF_PATH_OF_ENCRYPTED_FILE = "src/TextFiles/EncryptedFile.txt";
+    public static final String STRING_OF_PATH_OF_DECRYPTED_FILE = "src/TextFiles/DecryptedFile.txt";
+    public static final String STRING_OF_PATH_OF_REFERENCE_WORDS_FILE = "src/TextFiles/ReferenceWords.txt";
+    public static final String STRING_OF_PATH_OF_BRUTE_FORCE_FILE = "src/TextFiles/BruteForce.txt";
 
 
 

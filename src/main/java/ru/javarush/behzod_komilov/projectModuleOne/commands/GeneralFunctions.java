@@ -6,9 +6,13 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GeneralFunctions {
 
@@ -47,7 +51,7 @@ public class GeneralFunctions {
         } else {
             encryptedChar = oneByteOfSourceFile;
         }
-            return encryptedChar;
+        return encryptedChar;
     }
 
     private static int findNewIndex(int indexOfCharacterInAlphabetsAndSymbols, int realCypherKey) {
@@ -129,6 +133,68 @@ public class GeneralFunctions {
         }
 
         return charList;
+    }
+
+    public static Set<String> createUnicalWordListOfFile(String stringOfPath) {
+
+        String delimiters = "[-\",():;»«\\[\\].!? …'’”“{}*—]";
+        List<String> stringListOfReferenceWords = new ArrayList<>();
+        List<String> tmpStringLinesOfReferenceWords = new ArrayList<>();
+
+        try {
+
+            tmpStringLinesOfReferenceWords = Files.readAllLines(Path.of(stringOfPath), Charset.defaultCharset());
+
+        } catch (IOException e) {
+            System.out.println("Error reading reference words file in function findUnicalWordsOfFile(String stringOfPath)");
+        }
+
+        for (String line : tmpStringLinesOfReferenceWords) {
+
+            String[] splitedWithDelimiters = line.split(delimiters);
+
+            for (String splitedWord : splitedWithDelimiters) {
+                if (!splitedWord.isBlank() && !splitedWord.isEmpty()) {
+                    stringListOfReferenceWords.add(splitedWord);
+                }
+            }
+        }
+
+        Set<String> unicalListOfReferenceWords = new HashSet<>(stringListOfReferenceWords);
+
+        return unicalListOfReferenceWords;
+    }
+
+    public static Set<String> CreateUnicalWordsListExtractingWordsFromFile(String stringOfPath) {
+
+        List<String> allLinesStringOfPath = new ArrayList<>();
+        List<String> wordsOfStringOfPath = new ArrayList<>();
+
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(stringOfPath))) {
+
+            String line;
+
+            while ((line = bufferedReader.readLine()) != null) {
+                if (line != "") {
+                    allLinesStringOfPath.add(line);
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (String line : allLinesStringOfPath) {
+            String[] splitedLine = line.split(" ");
+
+            for (String word : splitedLine) {
+                wordsOfStringOfPath.add(word);
+            }
+        }
+
+        Set<String> wordList = new HashSet<>(wordsOfStringOfPath);
+
+        return wordList;
     }
 
 }
