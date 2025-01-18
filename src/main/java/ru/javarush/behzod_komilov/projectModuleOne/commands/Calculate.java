@@ -14,7 +14,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class GeneralFunctions {
+public class Calculate {
 
     private static int indexOfCharacterInAlphabetsAndSymbols;
     private static int newIndexOfCharacterInAlphabetsAndSymbols;
@@ -135,6 +135,7 @@ public class GeneralFunctions {
         return charList;
     }
 
+    //Faylni so'zlarini delimiterlarga ko'ra bo'lib beradi.
     public static Set<String> createUnicalWordListOfFile(String stringOfPath) {
 
         String delimiters = "[-\",():;»«\\[\\].!? …'’”“{}*—]";
@@ -165,7 +166,8 @@ public class GeneralFunctions {
         return unicalListOfReferenceWords;
     }
 
-    public static Set<String> CreateUnicalWordsListExtractingWordsFromFile(String stringOfPath) {
+    //Faylni so'zlarini probel bo'yicha bo'lib beradi
+    public static Set<String> CreateUnicalWordsListByExtractingWordsFromFile(String stringOfPath) {
 
         List<String> allLinesStringOfPath = new ArrayList<>();
         List<String> wordsOfStringOfPath = new ArrayList<>();
@@ -175,7 +177,7 @@ public class GeneralFunctions {
             String line;
 
             while ((line = bufferedReader.readLine()) != null) {
-                if (line != "") {
+                if (line != "" && !line.isEmpty() && !line.isBlank()) {
                     allLinesStringOfPath.add(line);
                 }
             }
@@ -188,7 +190,13 @@ public class GeneralFunctions {
             String[] splitedLine = line.split(" ");
 
             for (String word : splitedLine) {
-                wordsOfStringOfPath.add(word);
+
+                for (char c : word.toCharArray()) {
+                    if (isLatinOrCyrillic(c)){
+                        wordsOfStringOfPath.add(word);
+                        break;
+                    }
+                }
             }
         }
 
@@ -197,4 +205,46 @@ public class GeneralFunctions {
         return wordList;
     }
 
+    public static boolean containsInReferenceWords(String word) {
+
+        Set<String> listOfReferenceWords = Calculate.createUnicalWordListOfFile(Constants.STRING_OF_PATH_OF_REFERENCE_WORDS_FILE);
+
+        boolean contains = listOfReferenceWords.contains(word);
+
+        return contains;
+    }
+
+    public static int calculateUniqueAmountOfChars(Set<String> wordsListExtractedFromFile) {
+
+        Set<Character> characterSet = new HashSet<>();
+
+        for (String word : wordsListExtractedFromFile) {
+            for (char c : word.toCharArray()) {
+                characterSet.add(c);
+            }
+        }
+
+        return characterSet.size();
+    }
+
+    public static String encryptWord(String word, int key) {
+
+        String result = null;
+        StringBuilder crackedWordTemp = new StringBuilder();
+        char[] wordCharArray = word.toCharArray();
+        char[] tmp = new char[wordCharArray.length];
+
+        for (int i = 0; i < wordCharArray.length; i++) {
+            tmp[i] = Calculate.encryptChar(wordCharArray[i], key);
+            crackedWordTemp.append(tmp[i]);
+        }
+
+        result = crackedWordTemp.toString();
+        return result;
+    }
+
+    public static boolean isLatinOrCyrillic(char ch) {
+        return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') ||
+                (ch >= 'А' && ch <= 'Я') || (ch >= 'а' && ch <= 'я');
+    }
 }

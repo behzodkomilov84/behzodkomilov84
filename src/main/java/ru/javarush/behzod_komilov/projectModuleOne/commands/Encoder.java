@@ -28,14 +28,14 @@ public class Encoder extends Encryptable implements AbleToDoSomething {
     @Override
     public void encryptFile(int key) {
 
-        List<Character> charListOfSourceFile = GeneralFunctions.convertFileToCharList(pathOfSourceFile);
+        List<Character> charListOfSourceFile = Calculate.convertFileToCharList(pathOfSourceFile);
         List<Character> charListOfEncryptedFile = new ArrayList<>();
 
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(pathOfEncryptedFile.toFile()))) {
 
             for (int i = 0; i < charListOfSourceFile.size(); i++) {
 
-                charListOfEncryptedFile.add(GeneralFunctions.encryptChar(charListOfSourceFile.get(i), key)); // shu yerda encrypt bo'ladi
+                charListOfEncryptedFile.add(Calculate.encryptChar(charListOfSourceFile.get(i), key)); // shu yerda encrypt bo'ladi
 
                 bufferedWriter.write(charListOfEncryptedFile.get(i));
             }

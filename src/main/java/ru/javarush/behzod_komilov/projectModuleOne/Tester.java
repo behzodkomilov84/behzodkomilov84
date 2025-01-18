@@ -1,34 +1,25 @@
 package ru.javarush.behzod_komilov.projectModuleOne;
 
+import ru.javarush.behzod_komilov.projectModuleOne.commands.Calculate;
 import ru.javarush.behzod_komilov.projectModuleOne.constants.Constants;
 
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 public class Tester {
 
 
     public static void main(String[] args) {
 
-        try {
-            List<String> tmpStringLinesOfReferenceWords = Files.readAllLines(Path.of(Constants.STRING_OF_PATH_OF_REFERENCE_WORDS_FILE), Charset.defaultCharset());
-            List<String> stringListOfReferenceWords = new ArrayList<>();
+        Set<String> wordsListExtractedFromFile = Calculate.CreateUnicalWordsListByExtractingWordsFromFile(Constants.STRING_OF_PATH_OF_SOURCE_FILE);
 
-            for (String line : tmpStringLinesOfReferenceWords) {
-            }
-
-            System.out.println(stringListOfReferenceWords);
-        } catch (IOException e) {
-            System.out.println("Error reading reference words file");
+        int i = 0;
+        for (String string : wordsListExtractedFromFile) {
+            System.out.println(i + ": " + string);
+            i++;
         }
     }
+
 }
-
-
 
 
 /* public class CharacterCheck{
